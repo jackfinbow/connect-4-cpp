@@ -5,7 +5,7 @@ class Human: public Player
     public:
     Human();
 
-    int Player::getInput()
+    int getInput()
     {
         string userInput;
         int intInput = 0;
@@ -22,4 +22,4 @@ class Human: public Player
         
         return intInput;
     }
-}
+};

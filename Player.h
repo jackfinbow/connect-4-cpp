@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 #include <string>
 using namespace std;
@@ -13,10 +14,10 @@ class Player
         counter = colour;
     }
 
-    int getInput();
+    virtual int getInput() = 0;
     
     char getCounter()
     {
         return counter;
     }
-}
+};

@@ -2,7 +2,7 @@
 
 Board::Board(int row, int col)
 {
-    Board.board = [row][col];
+    //Board::board[row][col];
     hasWon = false;
 }
 

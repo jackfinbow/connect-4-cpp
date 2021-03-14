@@ -1,6 +1,10 @@
+#include <iostream>
 #include "MyConnectFour.h"
+using namespace std;
 
-class Main
+int main()
 {
-    connectFourGame MyConnectFour;
+    MyConnectFour connectFourGame;
+
+    return 0;
 }

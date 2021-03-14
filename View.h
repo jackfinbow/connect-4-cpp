@@ -5,5 +5,5 @@ using namespace std;
 class View
 {
     public:
-    void display(string board);
-}
+    virtual void display(string board) = 0;
+};

@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 #include <string>
 #include <cstdlib>
@@ -9,7 +10,7 @@ class Board
     bool hasWon;
 
     public:
-    static char board = [][];
+    static char board[3][5];
 
     Board(int row, int col);
 
@@ -37,4 +38,4 @@ class Board
 
     // modifier method for returning hasWon boolean
     void setHasWon(bool haveWon);
-}
+};

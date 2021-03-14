@@ -2,8 +2,8 @@
 
 class CommandLineView: public View
 {
-    void View::display(string str)
+    void display(string str)
     {
         cout << str;
     }
-}
+};

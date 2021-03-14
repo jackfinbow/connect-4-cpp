@@ -1,5 +1,12 @@
 #include "MyConnectFour.h"
 
+MyConnectFour::MyConnectFour()
+{
+    // input
+	setUpGame();
+	playGame();
+}
+
 void MyConnectFour::setUpGame()
 {
     introMessage();
@@ -48,7 +55,7 @@ void MyConnectFour::playGame()
 
 void MyConnectFour::introMessage()
 {
-    CommandLineView view;
+    //CommandLineView view;
 
     view.display("Welcome to Connect 4");
     view.display("To play the game type in the number of the column you want to drop you counter in");
@@ -60,16 +67,55 @@ void MyConnectFour::introMessage()
 
 void MyConnectFour::assignPlayers()
 {
+	vector <char> colours (2);
+	colours.insert('r');
+	colours.insert('y');
+	char colour;
+	bool isROrY = false;
 
+	try
+	{
+		while(isROrY == false)
+		{
+			cin >> colour;
+			if(colour == 'r' || colour == 'y')
+			{
+				isROrY = true;
+			}
+			else
+			{
+				view.display("The colour you select must be r or y. Please re-enter:");
+			}
+		}
+	}
+	catch(exception e)
+	{
+		view.display("An input was not detected");
+	}
+	int colourIndex = colours.at(colour);
+
+	Human player1(colour);
+
+	char compColour = colours.at((colourIndex + 1) % colours.size());
+	Computer computer(compColour);
+
+	view.display("Player is " + player1.getCounter());
+	view.display("Computer is " + computer.getCounter());
+
+	players.insert(player1);
+	players.insert(computer);
+	currentPlayer = 0;
 }
 
 void MyConnectFour::createBoard()
 {
-    
+    view.display("");
+	view.display("Enter the number of rows for the Connect 4 grid:");
+	int numRows = players.at(0).getInput();
+	view.display("");
+	view.display("Enter the number of columns for the Connect 4 grid:");
+	int numCols = players.at(0).getInput();
+	board(numRows, numCols);
+	view.display(board.boardToString());
 }
 
-public:
-MyConnectFour::MyConnectFour()
-{
-    // input
-}

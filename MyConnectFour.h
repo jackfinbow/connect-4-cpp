@@ -1,19 +1,22 @@
 #include <iostream>
 #include <string>
+#include <vector>
 #include "Board.h"
-#include "View.h"
+//#include "View.h"
 #include "CommandLineView.h"
-#include "Player.h"
+//#include "Player.h"
+#include "Human.h"
+#include "Computer.h"
 using namespace std;
 
 class MyConnectFour
 {
     private:
     // input
-    // player
+    vector <Player*> players = vector <Player*>(2);
     int currentPlayer;
     Board board;
-    View view;
+    CommandLineView view;
 
     void setUpGame();
 
@@ -27,4 +30,4 @@ class MyConnectFour
 
     public:
     MyConnectFour();
-}
+};
