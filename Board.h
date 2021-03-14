@@ -2,6 +2,8 @@
 #include <iostream>
 #include <string>
 #include <cstdlib>
+#include <cstring>
+#include <vector>
 using namespace std;
 
 class Board
@@ -10,7 +12,7 @@ class Board
     bool hasWon;
 
     public:
-    static char board[3][5];
+    static vector <vector <char> > board (3, vector <char> (5));
 
     Board(int row, int col);
 

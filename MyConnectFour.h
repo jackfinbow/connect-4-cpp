@@ -11,7 +11,7 @@ using namespace std;
 
 class MyConnectFour
 {
-    private:
+    /*private:
     // input
     vector <Player*> players = vector <Player*>(2);
     int currentPlayer;
@@ -27,7 +27,7 @@ class MyConnectFour
     void assignPlayers();
 
     void createBoard();
-
+    */
     public:
     MyConnectFour();
 };

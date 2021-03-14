@@ -3,10 +3,11 @@
 MyConnectFour::MyConnectFour()
 {
     // input
-	setUpGame();
-	playGame();
+	cout << "made it :)";
+	//setUpGame();
+	//playGame();
 }
-
+/*
 void MyConnectFour::setUpGame()
 {
     introMessage();
@@ -118,4 +119,4 @@ void MyConnectFour::createBoard()
 	board(numRows, numCols);
 	view.display(board.boardToString());
 }
-
+*/
