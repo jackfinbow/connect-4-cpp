@@ -1,5 +1,10 @@
 #include "Human.h"
 
+Human::Human(char colour) : Player(colour)
+{
+    
+}
+
 int Human::getInput()
 {
     string userInput;

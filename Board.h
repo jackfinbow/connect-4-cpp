@@ -12,7 +12,8 @@ class Board
     bool hasWon;
 
     public:
-    static vector <vector <char> > board (3, vector <char> (5));
+    static vector <vector <char> > board;
+    //static vector <vector <char> > board (3, vector <char> (5, ''));
 
     Board(int row, int col);
 

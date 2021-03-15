@@ -3,7 +3,7 @@
 class Human: public Player
 {
     public:
-    Human();
+    Human(char colour);
 
     int getInput();
 };

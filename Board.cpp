@@ -1,8 +1,11 @@
 #include "Board.h"
 
+vector <vector <char> > Board::board;
+
 Board::Board(int row, int col)
 {
     //Board::board[row][col];
+    board = vector <vector <char> >(3, vector <char> (5));
     hasWon = false;
 }
 
@@ -14,7 +17,7 @@ string Board::boardToString()
     // appends board to string
     for(int i = 0; i < board.size(); i++)
     {
-        for(int j = 0; j < strlen(board[i]); j++)
+        for(int j = 0; j < board[i].size(); j++)
         {
             if(board[i][j] == 'r')
             {
@@ -34,7 +37,7 @@ string Board::boardToString()
     }
     // appends column numbers to string
     boardString += ("  " + 1);
-    for(int k = 1; k < strlen(board[0]); k++)
+    for(int k = 1; k < board[0].size(); k++)
     {
         boardString += ("   " + (k + 1));
     }
@@ -46,7 +49,7 @@ string Board::boardToString()
 bool Board::placeCounter(char player, int position, char otherPlayer){
     bool placed = false;
     
-    for(int i=strlen(board)-1; i>=0; i--)
+    for(int i=board.size()-1; i>=0; i--)
     {
         if(!placed)
         {
@@ -77,10 +80,10 @@ void Board::checkHorizontal(char counter)
     int count = 0;
 
     // cycle through rows
-    for(int i=0; i<strlen(board); i++)
+    for(int i=0; i<board.size(); i++)
     {
         // cycle through columns
-        for(int j=0; j<strlen(board[i]); j++)
+        for(int j=0; j<board[i].size(); j++)
         {
             if(board[i][j] == counter)
             {
@@ -105,10 +108,10 @@ void Board::checkVertical(char counter)
     int count = 0;
 
     // cycle through columns
-    for(int i=0; i<strlen(board[0]); i++)
+    for(int i=0; i<board[0].size(); i++)
     {
         // cycle through rows
-        for(int j=0; j<strlen(board); j++)
+        for(int j=0; j<board.size(); j++)
         {
             if(board[j][i] == counter){
                 count = count + 1;
@@ -132,7 +135,7 @@ void Board::checkLeadingDiagonal(char counter)
     int count = 0;
 
     // start by cycling through columns staring with each row from bottom to top
-    int startRow = strlen(board) - 1;
+    int startRow = board.size() - 1;
     do
     {
         int row = startRow;
@@ -157,12 +160,12 @@ void Board::checkLeadingDiagonal(char counter)
             // if index out of bounds, reset startCol so that it exits do loop
             catch(exception e)
             {
-                startCol = strlen(board[0]);
+                startCol = board[0].size();
             }
             row++;
             startCol++;
 
-        } while(startCol < strlen(board[0]));
+        } while(startCol < board[0].size());
         startRow--;
         count = 0;
     } while(startRow > 0);
@@ -193,15 +196,15 @@ void Board::checkLeadingDiagonal(char counter)
             }
             catch(exception e)
             {
-                startRow = strlen(board[0]);
+                startRow = board[0].size();
             }
             startRow++;
             col++;
 
-        } while(startRow < strlen(board));
+        } while(startRow < board.size());
         startCol++;
         count = 0;
-    } while(startCol < strlen(board[0]));
+    } while(startCol < board[0].size());
 }
 
 // method checks board along reverse diagonal for win
@@ -210,11 +213,11 @@ void Board::checkReverseDiagonal(char counter)
     int count = 0;
 
     // start by cycling through columns staring with each row from bottom to top
-    int startRow = strlen(board) - 1;
+    int startRow = board.size() - 1;
     do
     {
         int row = startRow;
-        int startCol = strlen(board[0]) - 1;
+        int startCol = board[0].size() - 1;
         do
         {
             try
@@ -246,7 +249,7 @@ void Board::checkReverseDiagonal(char counter)
 
     count = 0;
     // now cycle through rows staring with each column from end to beginning
-    int startCol = strlen(board[0]) - 1;
+    int startCol = board[0].size() - 1;
     do
     {
         int col = startCol;
@@ -270,12 +273,12 @@ void Board::checkReverseDiagonal(char counter)
             }
             catch(exception e)
             {
-                startRow = strlen(board[0]);
+                startRow = board[0].size();
             }
             startRow++;
             col--;
 
-        } while(startRow < strlen(board));
+        } while(startRow < board.size());
         startCol--;
         count = 0;
     } while(startCol >= 0);

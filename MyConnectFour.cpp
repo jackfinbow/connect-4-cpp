@@ -1,13 +1,15 @@
 #include "MyConnectFour.h"
 
+Board board(3,5);
+
 MyConnectFour::MyConnectFour()
 {
     // input
 	cout << "made it :)";
-	//setUpGame();
-	//playGame();
+	setUpGame();
+	playGame();
 }
-/*
+
 void MyConnectFour::setUpGame()
 {
     introMessage();
@@ -29,23 +31,24 @@ void MyConnectFour::playGame()
 			{
 				view.display("Enter the column you'd like to place your counter in:");
 				// obtain input from current player
-				int move = players.get(currentPlayer).getInput();
+				int move = players.at(currentPlayer)->getInput();
 				// place counter for current player with their counter colour
-				isCounterPlaced = board.placeCounter(players.get(currentPlayer).getCounter(), move, players.get((currentPlayer + 1) % players.size()).getCounter());
+				isCounterPlaced = board.placeCounter(players.at(currentPlayer)->getCounter(), move, players.at((currentPlayer + 1) % players.size())->getCounter());
 			}
 			
 			// check for win (4 consecutive counters)
-			board.checkHorizontal(players.get(currentPlayer).getCounter());
-			board.checkVertical(players.get(currentPlayer).getCounter());
-			board.checkLeadingDiagonal(players.get(currentPlayer).getCounter());
-			board.checkReverseDiagonal(players.get(currentPlayer).getCounter());
+			board.checkHorizontal(players.at(currentPlayer)->getCounter());
+			board.checkVertical(players.at(currentPlayer)->getCounter());
+			board.checkLeadingDiagonal(players.at(currentPlayer)->getCounter());
+			board.checkReverseDiagonal(players.at(currentPlayer)->getCounter());
 			
 			// prints the board to command line console
 			view.display(board.boardToString());
 			// if current player has won, print message stating the player that has won
 			if(board.getHasWon()){
 				win = true;
-				view.display(players.get(currentPlayer).getClass().getName() + " has Won!!!");	//https://stackoverflow.com/questions/6271417/java-get-the-current-class-name
+				//view.display(to_string(typeid(players.at(currentPlayer))) + " has Won!!!");	//https://stackoverflow.com/questions/6271417/java-get-the-current-class-name
+				view.display("Game over");
 			}
 
 			board.setHasWon(false);
@@ -69,8 +72,8 @@ void MyConnectFour::introMessage()
 void MyConnectFour::assignPlayers()
 {
 	vector <char> colours (2);
-	colours.insert('r');
-	colours.insert('y');
+	colours.insert(colours.end(), 'r');
+	colours.insert(colours.end(), 'y');
 	char colour;
 	bool isROrY = false;
 
@@ -95,16 +98,16 @@ void MyConnectFour::assignPlayers()
 	}
 	int colourIndex = colours.at(colour);
 
-	Human player1(colour);
+	//Human player1(colour);
 
 	char compColour = colours.at((colourIndex + 1) % colours.size());
-	Computer computer(compColour);
+	//Computer computer(compColour);
 
-	view.display("Player is " + player1.getCounter());
-	view.display("Computer is " + computer.getCounter());
+	view.display("Player is " + colour);
+	view.display("Computer is " + compColour);
 
-	players.insert(player1);
-	players.insert(computer);
+	players.push_back(new Human(colour));
+	players.push_back(new Computer(compColour));
 	currentPlayer = 0;
 }
 
@@ -112,11 +115,10 @@ void MyConnectFour::createBoard()
 {
     view.display("");
 	view.display("Enter the number of rows for the Connect 4 grid:");
-	int numRows = players.at(0).getInput();
+	int numRows = players.at(0)->getInput();
 	view.display("");
 	view.display("Enter the number of columns for the Connect 4 grid:");
-	int numCols = players.at(0).getInput();
-	board(numRows, numCols);
+	int numCols = players.at(0)->getInput();
+	//board(numRows, numCols);
 	view.display(board.boardToString());
 }
-*/

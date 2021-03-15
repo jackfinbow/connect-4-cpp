@@ -7,7 +7,7 @@
 class Computer: public Player
 {
     public:
-    Computer();
+    Computer(char colour);
 
     int getInput();
 };

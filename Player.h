@@ -6,9 +6,11 @@ using namespace std;
 class Player
 {
     private:
-    char counter;
+    //char counter;
 
     public:
+    char counter;
+
     Player(char colour)
     {
         counter = colour;

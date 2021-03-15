@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <typeinfo>
 #include "Board.h"
 //#include "View.h"
 #include "CommandLineView.h"
@@ -11,11 +12,11 @@ using namespace std;
 
 class MyConnectFour
 {
-    /*private:
+    private:
     // input
-    vector <Player*> players = vector <Player*>(2);
+    vector <Player*> players;
     int currentPlayer;
-    Board board;
+    //Board board(3,5);
     CommandLineView view;
 
     void setUpGame();
@@ -27,7 +28,7 @@ class MyConnectFour
     void assignPlayers();
 
     void createBoard();
-    */
+    
     public:
     MyConnectFour();
 };
