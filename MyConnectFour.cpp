@@ -1,11 +1,11 @@
 #include "MyConnectFour.h"
 
 Board board(3,5);
+//vector <Player*> MyConnectFour::players;
 
 MyConnectFour::MyConnectFour()
 {
     // input
-	cout << "made it :)";
 	setUpGame();
 	playGame();
 }
@@ -49,6 +49,8 @@ void MyConnectFour::playGame()
 				win = true;
 				//view.display(to_string(typeid(players.at(currentPlayer))) + " has Won!!!");	//https://stackoverflow.com/questions/6271417/java-get-the-current-class-name
 				view.display("Game over");
+				delete players.at(0);
+				delete players.at(0);
 			}
 
 			board.setHasWon(false);
@@ -82,6 +84,7 @@ void MyConnectFour::assignPlayers()
 		while(isROrY == false)
 		{
 			cin >> colour;
+			cout << "got colour " << colour << endl;
 			if(colour == 'r' || colour == 'y')
 			{
 				isROrY = true;
@@ -96,13 +99,15 @@ void MyConnectFour::assignPlayers()
 	{
 		view.display("An input was not detected");
 	}
-	int colourIndex = colours.at(colour);
-
+	cout << "here1" << endl;
+	auto it = find(colours.begin(), colours.end(), colour);
+	int colourIndex = distance(colours.begin(), it);
+	cout << "here2" << endl;
 	//Human player1(colour);
 
 	char compColour = colours.at((colourIndex + 1) % colours.size());
 	//Computer computer(compColour);
-
+	cout << "here3" << endl;
 	view.display("Player is " + colour);
 	view.display("Computer is " + compColour);
 

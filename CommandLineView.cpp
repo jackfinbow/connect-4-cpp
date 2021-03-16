@@ -2,5 +2,5 @@
 
 void CommandLineView::display(string str)
 {
-    cout << str;
+    cout << str << endl;
 }

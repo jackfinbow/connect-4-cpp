@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include <typeinfo>
+#include <algorithm>
 #include "Board.h"
 //#include "View.h"
 #include "CommandLineView.h"
