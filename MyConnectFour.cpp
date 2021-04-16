@@ -32,6 +32,9 @@ void MyConnectFour::playGame()
 				view.display("Enter the column you'd like to place your counter in:");
 				// obtain input from current player
 				int move = players.at(currentPlayer)->getInput();
+				cout << move << endl;
+				cout << players.at(currentPlayer)->getCounter() << endl;
+				cout << players.at((currentPlayer + 1) % players.size())->getCounter() << endl;
 				// place counter for current player with their counter colour
 				isCounterPlaced = board.placeCounter(players.at(currentPlayer)->getCounter(), move, players.at((currentPlayer + 1) % players.size())->getCounter());
 			}
@@ -84,7 +87,7 @@ void MyConnectFour::assignPlayers()
 		while(isROrY == false)
 		{
 			cin >> colour;
-			cout << "got colour " << colour << endl;
+
 			if(colour == 'r' || colour == 'y')
 			{
 				isROrY = true;
@@ -99,17 +102,19 @@ void MyConnectFour::assignPlayers()
 	{
 		view.display("An input was not detected");
 	}
-	cout << "here1" << endl;
 	auto it = find(colours.begin(), colours.end(), colour);
 	int colourIndex = distance(colours.begin(), it);
-	cout << "here2" << endl;
+
 	//Human player1(colour);
 
 	char compColour = colours.at((colourIndex + 1) % colours.size());
 	//Computer computer(compColour);
-	cout << "here3" << endl;
-	view.display("Player is " + colour);
-	view.display("Computer is " + compColour);
+	string playerString = "Player is ";
+	playerString += colour;
+	string compString = "Player is ";
+	compString += compColour;
+	view.display(playerString);
+	view.display(compString);
 
 	players.push_back(new Human(colour));
 	players.push_back(new Computer(compColour));

@@ -37,10 +37,12 @@ string Board::boardToString()
     }
     // appends column numbers to string
     boardString += ("  " + 1);
+    cout << "board" << endl;
     for(int k = 1; k < board[0].size(); k++)
     {
         boardString += ("   " + (k + 1));
     }
+    cout << "numbers" << endl;
     return boardString;
 }
 
@@ -66,7 +68,7 @@ bool Board::placeCounter(char player, int position, char otherPlayer){
             // checks if column selected is full
             if(i == 0 && !placed)
             {
-                cout << "Column is full";
+                cout << "Column is full" << endl;
             }
         }
     }
